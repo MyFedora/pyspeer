@@ -1,0 +1,20 @@
+{
+  "name": "pyspeer",
+  "version": "0.1.0",
+  "description": "Pyspeer spears Pylance",
+  "main": "src/app.js",
+  "author": "Lukas Haigner",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-terser": "^0.4.3",
+    "rollup": "^3.28.0"
+  },
+  "dependencies": {
+    "acorn": "^8.10.0",
+    "acorn-walk": "^8.2.0",
+    "stack-trace": "^1.0.0-pre2"
+  }
+}
