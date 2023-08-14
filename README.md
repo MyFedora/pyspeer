@@ -7,6 +7,7 @@ Pyspeer patches Pylance to permit the usage outside of Visual Studio Code, such 
 
 Prerequisites:
 
+- Install Node.js
 - Download Pylance extension
 - Clone Pyspeer repository
 
