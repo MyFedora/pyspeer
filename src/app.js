@@ -15,20 +15,18 @@ process.stderr.write = () => {
   const code = fs.readFileSync(path, 'utf-8');
   const ast = acorn.parse(code, { locations: true });
 
-  let targetFunExp = null;
+  let target = null;
 
-  walk.simple(ast, {
-    FunctionExpression(node, state) {
+  walk.ancestor(ast, {
+    Identifier(node, _state, ancestors) {
       if (isInsideLocation(node, line, column)) {
-        targetFunExp = node;
+        target = ancestors[ancestors.length - 7];
       }
-    },
+    }
   });
 
-  const targetFun = targetFunExp.body;
-  const targetNode = targetFun.body[targetFun.body.length - 1].expression.expressions[0].left;
-
-  console.log(replaceRange(code, targetNode.start, targetNode.end, '()=>{return !0x0;}').split(/\r?\n/).pop());
+  const newCode = replaceRange(code, target.start, target.end, '');
+  console.log(newCode.substring(newCode.indexOf('\n') + 1));
 };
 
 function isInsideLocation(node, line, column) {
